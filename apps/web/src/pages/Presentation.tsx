@@ -186,6 +186,30 @@ export const SLIDES: Array<{ title: string; render: () => ReactNode }> = [
     ),
   },
   {
+    title: 'Calidad del código',
+    render: () => (
+      <div className="flex h-full flex-col px-[5vw] py-[6vh]">
+        <SlideHeader title="Calidad del código" subtitle="Código abierto, revisado y con pruebas: cualquiera lo puede verificar" />
+        <div className="grid flex-1 grid-cols-[1.3fr_1fr_1fr_1fr] gap-[1.2vw] pt-[3.5vh]">
+          <Card label="Auditoría OWASP Top 10:2025" title="Seguridad" dark>
+            <Items dark size="1.15vw" items={['Agente experto en seguridad (skill web-security-audit)', 'Hallazgos altos y medios corregidos', 'Cada corrección con su prueba automática', 'Documentado en docs/SECURITY_AUDIT.md']} />
+          </Card>
+          <Card label="Automáticas" title="Pruebas">
+            <Items items={['200 pruebas (161 de la API y 39 de la app)', 'La IA probada con frases reales: intención, fuera de tema, manipulación', 'Pruebas de carga documentadas']} />
+          </Card>
+          <Card label="Skills de expertos" title="Buenas prácticas">
+            <Items items={['Diseño: Impeccable', 'Código simple: Karpathy guidelines y Ponytail', 'Seguridad: web-security-audit', 'Secretos fuera del código; avisos firmados']} />
+          </Card>
+          <section className="flex flex-col items-center justify-center gap-[2.2vh] rounded-[1.2vw] bg-[#0f2f40] p-[1.6vw] text-white">
+            <p className="text-[1vw] font-semibold uppercase tracking-[0.14em] text-[#7fd6e1]">Código abierto</p>
+            <img src={qr(REPO_LINK)} alt="Código QR del repositorio en GitHub" className="aspect-square w-[min(15vw,32vh)] rounded-[1vw] bg-white p-[0.9vw]" />
+            <p className="text-center text-[1.05vw] font-semibold leading-snug">github.com/Dani777rtg/<br />la-segura</p>
+          </section>
+        </div>
+      </div>
+    ),
+  },
+  {
     title: 'Instálala en tu celular',
     render: () => (
       <div className="flex h-full flex-col px-[5vw] py-[6vh]">
@@ -211,6 +235,7 @@ export const SLIDES: Array<{ title: string; render: () => ReactNode }> = [
 ];
 
 const APP_LINK = `${window.location.origin}/`;
+const REPO_LINK = 'https://github.com/Dani777rtg/la-segura';
 
 function Steps({ items }: { items: string[] }) {
   return (

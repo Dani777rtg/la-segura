@@ -42,11 +42,11 @@ export function presentationRoutes(app: FastifyInstance, db: Db, config: Config)
     return { slide }
   })
 
-  // QR en SVG para las diapositivas. Solo para el WhatsApp del bot o para enlaces de esta misma app (no es un
+  // QR en SVG para las diapositivas. Solo para el WhatsApp del bot, el repositorio público o enlaces de esta app (no es un
   // generador abierto de QR).
   app.get('/qr.svg', async (req, reply) => {
     const { data } = qrQuery.parse(req.query)
-    const allowed = data.startsWith('https://wa.me/') || [config.PUBLIC_BASE_URL, config.WEB_ORIGIN].some((o) => data.startsWith(`${o}/`))
+    const allowed = data.startsWith('https://wa.me/') || data.startsWith('https://github.com/Dani777rtg/') || [config.PUBLIC_BASE_URL, config.WEB_ORIGIN].some((o) => data.startsWith(`${o}/`))
     if (!allowed) throw new AppError(400, 'bad_qr', 'Ese enlace no se puede convertir en QR aquí')
     const svg = await QRCode.toString(data, { type: 'svg', margin: 1, errorCorrectionLevel: 'M', color: { dark: '#0f2f40', light: '#ffffff' } })
     return reply.header('Content-Type', 'image/svg+xml').header('Cache-Control', 'public, max-age=3600').send(svg)
