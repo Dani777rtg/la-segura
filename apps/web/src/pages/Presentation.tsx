@@ -198,7 +198,7 @@ export const SLIDES: Array<{ title: string; render: () => ReactNode }> = [
             <Items items={['200 pruebas (161 de la API y 39 de la app)', 'La IA probada con frases reales: intención, fuera de tema, manipulación', 'Pruebas de carga documentadas']} />
           </Card>
           <Card label="Skills de expertos" title="Buenas prácticas">
-            <Items items={['Diseño: Impeccable', 'Código simple: Karpathy guidelines y Ponytail', 'Seguridad: web-security-audit', 'Secretos fuera del código; avisos firmados']} />
+            <Items items={['ECC (Everything Claude Code): security-review, backend-patterns, postgres-patterns, api-design, tdd-workflow', 'Diseño: Impeccable', 'Código simple: Karpathy guidelines y Ponytail', 'Decisiones documentadas en docs/DECISIONS.md']} />
           </Card>
           <section className="flex flex-col items-center justify-center gap-[2.2vh] rounded-[1.2vw] bg-[#0f2f40] p-[1.6vw] text-white">
             <p className="text-[1vw] font-semibold uppercase tracking-[0.14em] text-[#7fd6e1]">Código abierto</p>

@@ -30,7 +30,7 @@ Lo que se hizo, y dónde está la evidencia:
 - **200 pruebas automáticas** (161 de la API y 39 de la web): `npm test -w apps/api` y `npm test -w apps/web`.
 - **Pruebas del comportamiento de la IA** con frases reales (intenciones, fuera de tema, manipulación) contra el modelo real.
 - **Pruebas de carga** documentadas en [`docs/PERFORMANCE_TESTS.md`](docs/PERFORMANCE_TESTS.md).
-- **Buenas prácticas guiadas por skills:** diseño con *Impeccable*, código simple con *Karpathy guidelines* y *Ponytail*, seguridad con *web-security-audit*.
+- **Buenas prácticas guiadas por skills:** las skills de **ECC (Everything Claude Code)** `security-review`, `backend-patterns`, `postgres-patterns`, `database-migrations`, `api-design`, `hexagonal-architecture`, `tdd-workflow` y `e2e-testing` (ver [`docs/DECISIONS.md`](docs/DECISIONS.md)); diseño con *Impeccable*; código simple con *Karpathy guidelines* y *Ponytail*; seguridad con *web-security-audit*.
 - Avisos de Meta y Mercado Pago **firmados y verificados**, límites de uso, datos personales enmascarados, visita de enlaces que **nunca** entra a direcciones internas, secretos solo en variables de entorno (nunca en el repositorio).
 
 ## Arranque local

@@ -55,7 +55,7 @@ class MercadoPago implements PaymentsGateway {
       body: JSON.stringify({
         items: [
           {
-            id: 'creditos-1000',
+            id: i.amountCop === 500_000 ? 'donacion' : 'creditos-1000',
             title: i.title,
             quantity: 1,
             currency_id: 'COP',
@@ -65,7 +65,8 @@ class MercadoPago implements PaymentsGateway {
         external_reference: i.externalReference,
         statement_descriptor: 'LASEGURA',
         back_urls: { success: i.backUrl, pending: i.backUrl, failure: i.backUrl },
-        // Mercado Pago solo acepta auto_return y notification_url con direcciones https públicas.
+        // Pago aprobado: Mercado Pago devuelve a la persona a La Segura sola. Pendiente o rechazado: muestra el botón
+        // "Volver al sitio", que lleva a las mismas back_urls. Solo acepta auto_return y notification_url con https público.
         ...(https ? { auto_return: 'approved' } : {}),
         ...(i.notificationUrl?.startsWith('https://') ? { notification_url: i.notificationUrl } : {}),
       }),
