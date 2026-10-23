@@ -1,0 +1,63 @@
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Lenguaje de red social conocido (referencia del usuario): fondo gris claro, tarjetas blancas redondeadas,
+ * azul como único acento de acción, avatares redondos. Texto grande para personas mayores.
+ * Azul = marino del logo (#1C5D7D), acento suave = turquesa del chulo (#2CBBCB).
+ * Contrastes: ink/card 16:1, muted/card 5.9:1, brand/card 7.1:1, texto blanco sobre brand 7.1:1.
+ */
+:root {
+  --bg: 240 242 245; --card: 255 255 255; --ink: 28 30 33; --muted: 88 92 99; --line: 228 230 235; --soft: 242 243 245;
+  --brand: 28 93 125; --brand-ink: 255 255 255; --brand-soft: 224 244 247;
+  --sun: 255 214 10; --mark: 255 236 153;
+  --danger: 196 30 36; --warn: 154 88 0; --ok: 21 128 61;
+  --danger-bg: 254 235 236; --warn-bg: 255 244 214; --ok-bg: 227 246 233;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 18 19 21; --card: 30 32 35; --ink: 232 234 237; --muted: 170 175 182; --line: 52 55 60; --soft: 42 45 49;
+    --brand: 44 187 203; --brand-ink: 8 30 36; --brand-soft: 20 52 60;
+    --sun: 255 214 10; --mark: 255 236 153;
+    --danger: 255 140 140; --warn: 255 200 90; --ok: 120 220 150;
+    --danger-bg: 70 26 28; --warn-bg: 66 48 10; --ok-bg: 18 54 32;
+  }
+}
+
+html { font-size: 18px; -webkit-text-size-adjust: 100%; }
+body { @apply bg-bg font-sans text-ink antialiased; line-height: 1.55; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+a { text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid rgb(var(--brand)); outline-offset: 2px; border-radius: 10px; }
+::selection { background: rgb(var(--brand-soft)); }
+input, textarea { caret-color: rgb(var(--brand)); }
+
+/* Trampa marcada dentro del mensaje: subrayado suave, siempre legible (texto oscuro sobre amarillo claro). */
+.trap { color: #1c1e21; background: rgb(var(--mark)); border-radius: 4px; padding: 0 0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+@layer components {
+  .btn { @apply inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl px-5 text-base font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-brand text-brand-ink hover:brightness-110; }
+  .btn-ghost { @apply btn bg-soft text-ink hover:bg-line; }
+  .btn-sun { @apply btn bg-sun text-[#1c1e21]; }
+  .input { @apply min-h-[52px] w-full rounded-xl border border-line bg-soft px-4 text-base text-ink placeholder:text-muted; }
+  .input:focus { @apply border-brand bg-card; outline: none; box-shadow: 0 0 0 3px rgb(var(--brand) / 0.25); }
+  .input[aria-invalid='true'] { @apply border-danger; }
+  .card { @apply rounded-2xl bg-card p-5; box-shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 1px 3px rgb(0 0 0 / 0.04); }
+  .label { @apply mb-1.5 block text-base font-semibold; }
+  .field-error { @apply mt-1.5 text-base font-medium text-danger; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-semibold; }
+  .quote { @apply rounded-xl bg-soft px-4 py-3 text-[1.05rem] leading-relaxed; }
+}
+
+/* Mapa: botones de zoom grandes (fáciles de tocar) y tipografía de la app. */
+.territory-map .leaflet-control-zoom a { width: 44px; height: 44px; line-height: 44px; font-size: 22px; }
+.territory-map .leaflet-tooltip { font-family: Poppins, system-ui, sans-serif; font-size: 15px; padding: 6px 10px; border-radius: 10px; }
+.territory-map { font-family: Poppins, system-ui, sans-serif; }
+.territory-map .leaflet-tile-pane { filter: grayscale(0.9) brightness(1.08) contrast(0.88); }

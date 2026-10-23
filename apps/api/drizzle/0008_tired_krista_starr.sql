@@ -1,0 +1,1 @@
+ALTER TABLE "wa_messages" ADD COLUMN "done" boolean DEFAULT false NOT NULL;
